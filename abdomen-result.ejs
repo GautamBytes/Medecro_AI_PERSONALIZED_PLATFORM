@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        /* Your existing styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .navbar {
+            background-color: #d4f7b0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 20px 0px;
+            font-size: xx-large;
+            z-index: 3;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 30px;
+            color: black;
+        }
+
+        nav a:hover {
+            color: rgb(128, 109, 146);
+        }
+
+
+        .quicksand {
+            font-family: "Quicksand", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li strong {
+            color: #333;
+        }
+
+        button.retake-button,
+        button.download-button {
+            display: block;
+            width: 600px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            margin: 20px auto 0;
+            font-size: 16px;
+        }
+
+        button.retake-button:hover,
+        button.download-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Risk level text colors */
+        .risk-low {
+            font-weight: 700;
+            color: green;
+        }
+
+        .risk-moderate {
+            font-weight: 700;
+            color: orange;
+        }
+
+        .risk-high {
+            font-weight: 700;
+            color: red;
+        }
+
+        .image-container img {
+            width: 600px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+                margin: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            ul li {
+                font-size: 14px;
+            }
+
+            button.retake-button,
+            button.download-button {
+                width: 100%;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar quicksand">
+        <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Talaash Symptom Checker</span>
+        <a href="/about">About us</a>
+
+    </nav>
+    <div class="container quicksand">
+        <div class="image-container">
+            <img src="/images/report.png">
+        </div>
+        <hr>
+        <p>Thank you for your responses!</p>
+        <p>Your submitted details:</p>
+        <ul>
+            <li><strong>Name:</strong>
+                <strong>
+                    <%= formData.name || "Not provided" %>
+                </strong>
+            </li>
+            <li><strong>Age:</strong>
+                <strong>
+                    <%= formData.age || "Not provided" %>
+                </strong>
+            </li>
+            <li><strong>Country:</strong>
+                <strong>
+                    <%= formData.country || "Not provided" %>
+                </strong>
+            </li>
+            <li><strong>Symptom Area:</strong>
+                <strong>
+                    <%= formData["symptom-area"] || "Not provided" %>
+                </strong>
+            </li>
+            <li><strong>Symptoms:</strong>
+                <% if (Array.isArray(formData.symptoms)) { %>
+                    <strong>
+                        <%= formData.symptoms.length ? formData.symptoms.join(", ") : " None provided" %>
+                    </strong>
+                    <% } else { %>
+                        <strong>
+                            <%= formData.symptoms || "None provided" %>
+                        </strong>
+                        <% } %>
+            </li>
+
+            <!-- Display the answers to the 20 questions -->
+            <% const questions=[ "Do you experience chest pain or discomfort during physical activity?"
+                , "Have you ever been diagnosed with high blood pressure?"
+                , "Do you often feel shortness of breath, even with mild exertion?"
+                , "Have you ever been told you have high cholesterol levels?"
+                , "Do you have a family history of heart disease or heart attacks?"
+                , "Do you smoke or have you smoked in the past?" , "Do you feel fatigued or weak more often than usual?"
+                , "Do you experience irregular heartbeats or palpitations?"
+                , "Have you been diagnosed with diabetes or high blood sugar?"
+                , "Do you follow a sedentary lifestyle with little physical activity?"
+                , "Do you often feel dizzy or lightheaded?" , "Are you overweight or obese based on your BMI?"
+                , "Do you consume a diet high in saturated fats and processed foods?"
+                , "Have you ever experienced swelling in your legs, ankles, or feet?"
+                , "Do you have trouble sleeping, or do you suffer from sleep apnea?"
+                , "Have you experienced a rapid or abnormal heartbeat recently?"
+                , "Do you experience nausea or cold sweats without apparent reason?"
+                , "Do you feel pressure or squeezing in your chest at times?"
+                , "Are you under constant stress or anxiety?"
+                , "Have you noticed any unexplained weight gain or fluid retention?" ]; %>
+
+                <% for (let i=0; i < 20; i++) { %>
+                    <li><strong>Question <%= i + 1 %>:</strong>
+                        <strong>
+                            <%= questions[i] %> - <%= formData[`question${i + 1}`] || "Not answered" %>
+                        </strong>
+                    </li>
+                    <% } %>
+        </ul>
+        <hr>
+        <!-- Display the risk levels for each condition -->
+        <h2>Risk Levels for Abdomen Conditions:</h2>
+        <ul>
+            <% for (let condition in results) { %>
+                <li><strong>
+                        <%= condition %>:
+                    </strong>
+                    <span class="<%= 
+                        results[condition] === 'High' ? 'risk-high' :
+                        results[condition] === 'Moderate' ? 'risk-moderate' :
+                        'risk-low' 
+                    %>">
+                        <%= results[condition] %>
+                    </span>
+                </li>
+                <% } %>
+        </ul>
+
+        <form action="/symptoms/2" method="get">
+            <button type="submit" class="retake-button">Retake Test</button>
+        </form>
+        <form action="/abdomen-download-pdf" method="get">
+            <button type="submit" class="download-button">Download PDF</button>
+        </form>
+    </div>
+</body>
+
+</html>

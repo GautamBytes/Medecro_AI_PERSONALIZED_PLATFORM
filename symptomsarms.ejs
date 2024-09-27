@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arms Form</title>
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&family=Lovers+Quarrel&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap">
+    <link rel="stylesheet" href="/styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-image: url('/images/medical1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .navbar {
+            background-color: #d4f7b0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            padding: 20px 0px;
+            font-size: xx-large;
+            z-index: 3;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 30px;
+            color: black;
+        }
+
+        nav a:hover {
+            color: rgb(128, 109, 146);
+        }
+
+
+        .quicksand {
+            font-family: "Quicksand", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+
+        .container {
+            max-width: 600px;
+            height: 450px;
+            margin: auto;
+            margin-top: 130px;
+            background: transparent;
+            color: white;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Quicksand';
+            font-size: 25px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            /* For Safari */
+        }
+
+        .question {
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 20px;
+            margin: 5px;
+            width: 101px;
+
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 75px 0 75px;
+        }
+
+        input {
+            margin: 15px;
+
+        }
+
+        label {
+            display: inline-block;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar quicksand">
+        <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Talaash Symptom Checker</span>
+        <a href="/about">About us</a>
+
+    </nav>
+    <div class="container">
+        <form id="multi-step-form" action="/arms-submit-form" method="post">
+            <div class="question" id="question1">
+                <p>1.Do you experience pain in one or both of your arms?</p>
+                <input type="radio" id="q1-yes" name="question1" value="Yes">
+                <label for="q1-yes">Yes</label><br>
+                <input type="radio" id="q1-no" name="question1" value="No">
+                <label for="q1-no">No</label><br>
+                <input type="radio" id="q1-dontknow" name="question1" value="Don't know">
+                <label for="q1-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="nextQuestion(1)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question2">
+                <p>2.Is the arm pain sharp, dull, or throbbing?</p>
+                <input type="radio" id="q2-yes" name="question2" value="Yes">
+                <label for="q2-yes">Yes</label><br>
+                <input type="radio" id="q2-no" name="question2" value="No">
+                <label for="q2-no">No</label><br>
+                <input type="radio" id="q2-dontknow" name="question2" value="Don't know">
+                <label for="q2-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(2)">Back</button>
+                    <button type="button" onclick="nextQuestion(2)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question3">
+                <p>3.Do you feel tingling or numbness in your arms or hands?</p>
+                <input type="radio" id="q3-yes" name="question3" value="Yes">
+                <label for="q3-yes">Yes</label><br>
+                <input type="radio" id="q3-no" name="question3" value="No">
+                <label for="q3-no">No</label><br>
+                <input type="radio" id="q3-dontknow" name="question3" value="Don't know">
+                <label for="q3-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(3)">Back</button>
+                    <button type="button" onclick="nextQuestion(3)">Next</button>
+                </div>
+            </div>
+
+            <!-- Add the age question -->
+            <div class="question" id="question4">
+                <p>4. Is the numbness in your arms constant or does it come and go?</p>
+                <input type="radio" id="q4-yes" name="question4" value="Yes">
+                <label for="q4-yes">Yes</label><br>
+                <input type="radio" id="q4-no" name="question4" value="No">
+                <label for="q4-no">No</label><br>
+                <input type="radio" id="q4-dontknow" name="question4" value="Don't know">
+                <label for="q4-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(4)">Back</button>
+                    <button type="button" onclick="nextQuestion(4)">Next</button>
+                </div>
+            </div>
+
+            <!-- Continue with remaining questions -->
+            <div class="question" id="question5">
+                <p>5. Do you have difficulty moving or lifting your arms?</p>
+                <input type="radio" id="q5-yes" name="question5" value="Yes">
+                <label for="q5-yes">Yes</label><br>
+                <input type="radio" id="q5-no" name="question5" value="No">
+                <label for="q5-no">No</label><br>
+                <input type="radio" id="q5-dontknow" name="question5" value="Don't know">
+                <label for="q5-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(5)">Back</button>
+                    <button type="button" onclick="nextQuestion(5)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question6">
+                <p>6. Does your arm pain radiate from your neck or shoulders?</p>
+                <input type="radio" id="q6-yes" name="question6" value="Yes">
+                <label for="q6-yes">Yes</label><br>
+                <input type="radio" id="q6-no" name="question6" value="No">
+                <label for="q6-no">No</label><br>
+                <input type="radio" id="q6-dontknow" name="question6" value="Don't know">
+                <label for="q6-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(6)">Back</button>
+                    <button type="button" onclick="nextQuestion(6)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question7">
+                <p>7. Have you noticed any swelling in your arms, hands, or fingers?</p>
+                <input type="radio" id="q7-yes" name="question7" value="Yes">
+                <label for="q7-yes">Yes</label><br>
+                <input type="radio" id="q7-no" name="question7" value="No">
+                <label for="q7-no">No</label><br>
+                <input type="radio" id="q7-dontknow" name="question7" value="Don't know">
+                <label for="q7-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(7)">Back</button>
+                    <button type="button" onclick="nextQuestion(7)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question8">
+                <p>8. Do you experience arm weakness or a feeling of heaviness?</p>
+                <input type="radio" id="q8-yes" name="question8" value="Yes">
+                <label for="q8-yes">Yes</label><br>
+                <input type="radio" id="q8-no" name="question8" value="No">
+                <label for="q8-no">No</label><br>
+                <input type="radio" id="q8-dontknow" name="question8" value="Don't know">
+                <label for="q8-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(8)">Back</button>
+                    <button type="button" onclick="nextQuestion(8)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question9">
+                <p>9. Is the arm pain worse at night or while resting?</p>
+                <input type="radio" id="q9-yes" name="question9" value="Yes">
+                <label for="q9-yes">Yes</label><br>
+                <input type="radio" id="q9-no" name="question9" value="No">
+                <label for="q9-no">No</label><br>
+                <input type="radio" id="q9-dontknow" name="question9" value="Don't know">
+                <label for="q9-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(9)">Back</button>
+                    <button type="button" onclick="nextQuestion(9)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question10">
+                <p>10. Have you noticed any discoloration or bruising on your arms?</p>
+                <input type="radio" id="q10-yes" name="question10" value="Yes">
+                <label for="q10-yes">Yes</label><br>
+                <input type="radio" id="q10-no" name="question10" value="No">
+                <label for="q10-no">No</label><br>
+                <input type="radio" id="q10-dontknow" name="question10" value="Don't know">
+                <label for="q10-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(10)">Back</button>
+                    <button type="button" onclick="nextQuestion(10)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question11">
+                <p>11. Do you experience burning sensations in your arms or hands?</p>
+                <input type="radio" id="q11-yes" name="question11" value="Yes">
+                <label for="q11-yes">Yes</label><br>
+                <input type="radio" id="q11-no" name="question11" value="No">
+                <label for="q11-no">No</label><br>
+                <input type="radio" id="q11-dontknow" name="question11" value="Don't know">
+                <label for="q11-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(11)">Back</button>
+                    <button type="button" onclick="nextQuestion(11)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question12">
+                <p>12. Does repetitive motion, such as typing or lifting, aggravate your arm pain?</p>
+                <input type="radio" id="q12-yes" name="question12" value="Yes">
+                <label for="q12-yes">Yes</label><br>
+                <input type="radio" id="q12-no" name="question12" value="No">
+                <label for="q12-no">No</label><br>
+                <input type="radio" id="q12-dontknow" name="question12" value="Don't know">
+                <label for="q12-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(12)">Back</button>
+                    <button type="button" onclick="nextQuestion(12)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question13">
+                <p>13. Have you experienced any recent injuries or trauma to your arms?</p>
+                <input type="radio" id="q13-yes" name="question13" value="Yes">
+                <label for="q13-yes">Yes</label><br>
+                <input type="radio" id="q13-no" name="question13" value="No">
+                <label for="q13-no">No</label><br>
+                <input type="radio" id="q13-dontknow" name="question13" value="Don't know">
+                <label for="q13-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(13)">Back</button>
+                    <button type="button" onclick="nextQuestion(13)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question14">
+                <p>14. Do you experience arm pain after physical activity or exercise?</p>
+                <input type="radio" id="q14-yes" name="question14" value="Yes">
+                <label for="q14-yes">Yes</label><br>
+                <input type="radio" id="q14-no" name="question14" value="No">
+                <label for="q14-no">No</label><br>
+                <input type="radio" id="q14-dontknow" name="question14" value="Don't know">
+                <label for="q14-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(14)">Back</button>
+                    <button type="button" onclick="nextQuestion(14)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question15">
+                <p>15. Have you noticed a loss of grip strength in your hands?</p>
+                <input type="radio" id="q15-yes" name="question15" value="Yes">
+                <label for="q15-yes">Yes</label><br>
+                <input type="radio" id="q15-no" name="question15" value="No">
+                <label for="q15-no">No</label><br>
+                <input type="radio" id="q15-dontknow" name="question15" value="Don't know">
+                <label for="q15-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(15)">Back</button>
+                    <button type="button" onclick="nextQuestion(15)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question16">
+                <p>16. Does your arm pain get worse with cold or damp weather?</p>
+                <input type="radio" id="q16-yes" name="question16" value="Yes">
+                <label for="q16-yes">Yes</label><br>
+                <input type="radio" id="q16-no" name="question16" value="No">
+                <label for="q16-no">No</label><br>
+                <input type="radio" id="q16-dontknow" name="question16" value="Don't know">
+                <label for="q16-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(16)">Back</button>
+                    <button type="button" onclick="nextQuestion(16)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question17">
+                <p>17. Do you experience swelling in your arm after prolonged standing or sitting?
+                </p>
+                <input type="radio" id="q17-yes" name="question17" value="Yes">
+                <label for="q17-yes">Yes</label><br>
+                <input type="radio" id="q17-no" name="question17" value="No">
+                <label for="q17-no">No</label><br>
+                <input type="radio" id="q17-dontknow" name="question17" value="Don't know">
+                <label for="q17-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(17)">Back</button>
+                    <button type="button" onclick="nextQuestion(17)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question18">
+                <p>18. Is your arm pain relieved by resting or applying ice?</p>
+                <input type="radio" id="q18-yes" name="question18" value="Yes">
+                <label for="q18-yes">Yes</label><br>
+                <input type="radio" id="q18-no" name="question18" value="No">
+                <label for="q18-no">No</label><br>
+                <input type="radio" id="q18-dontknow" name="question18" value="Don't know">
+                <label for="q18-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(18)">Back</button>
+                    <button type="button" onclick="nextQuestion(18)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question19">
+                <p>19. Do you feel tightness or stiffness in your arms or shoulders?</p>
+                <input type="radio" id="q19-yes" name="question19" value="Yes">
+                <label for="q19-yes">Yes</label><br>
+                <input type="radio" id="q19-no" name="question19" value="No">
+                <label for="q19-no">No</label><br>
+                <input type="radio" id="q19-dontknow" name="question19" value="Don't know">
+                <label for="q19-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(19)">Back</button>
+                    <button type="button" onclick="nextQuestion(19)">Next</button>
+                </div>
+            </div>
+
+            <div class="question" id="question20">
+                <p>20. Have you experienced any muscle spasms or cramping in your arms?</p>
+                <input type="radio" id="q20-yes" name="question20" value="Yes">
+                <label for="q20-yes">Yes</label><br>
+                <input type="radio" id="q20-no" name="question20" value="No">
+                <label for="q20-no">No</label><br>
+                <input type="radio" id="q20-dontknow" name="question20" value="Don't know">
+                <label for="q20-dontknow">Don't know</label>
+                <div class="button-group">
+                    <button type="button" onclick="prevQuestion(20)">Back</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function showQuestion(questionNumber) {
+            // Hide all questions
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(q => q.classList.remove('active'));
+
+            // Show the current question
+            const currentQuestion = document.getElementById(`question${questionNumber}`);
+            if (currentQuestion) {
+                currentQuestion.classList.add('active');
+            }
+        }
+
+        function nextQuestion(currentNumber) {
+            showQuestion(currentNumber + 1);
+        }
+
+        function prevQuestion(currentNumber) {
+            showQuestion(currentNumber - 1);
+        }
+
+        // Initialize the form to show the first question
+        showQuestion(1);
+    </script>
+
+</body>
+
+</html>
