@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.navbar {
+    background-color: #d4f7b0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0px;
+    font-size: xx-large;
+    z-index: 3;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 30px;
+    color: black;
+}
+
+nav a:hover {
+    color: rgb(128, 109, 146);
+}
+
+.symptom-checker {
+    max-width: 1000px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.text-content {
+    width: 55%;
+    margin: 70px 20px 20px 90px;
+}
+
+.text-content h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.text-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.text-content ul {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.about-tool {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.about-tool li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.about-tool i {
+    color: green;
+    margin-right: 8px;
+}
+
+.image-content {
+    width: 40%;
+    text-align: center;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.certifications {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.certifications a {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.certifications a:hover {
+    text-decoration: underline;
+}
+
+.next-button {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.next-button .next {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.next-button .next:hover {
+    background-color: #218838;
+}
+
+.quicksand {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
