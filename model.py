@@ -313,7 +313,7 @@ def display_wellness_hunt():
         st.rerun()
 
     # Load the image
-    image = PILImage.open("Gamify_changes.jpg")  # Replace "Gamify_changes.jpg" with the actual path to your image file
+    image = PILImage.open("Gamify_changes.jpg") 
 
     # Display the image
     st.image(image, caption="Features of Wellness Hunt", use_column_width=True)
